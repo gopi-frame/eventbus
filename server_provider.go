@@ -8,10 +8,15 @@ import (
 	"github.com/gopi-frame/contract/support"
 )
 
-var _ support.ServerProvider = (*ServerProvider)(nil)
-
 // ServerProvider dispatcher server provider
-type ServerProvider struct{}
+type ServerProvider struct {
+	support.ServerProvider
+}
+
+// Dispatcher get Dispatcher instance
+func (s *ServerProvider) Dispatcher(c container.Container) event.Dispatcher {
+	return c.Get(reflect.TypeFor[Dispatcher]().String()).(event.Dispatcher)
+}
 
 // Register register
 func (s *ServerProvider) Register(c container.Container) {
