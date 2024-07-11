@@ -1,4 +1,4 @@
-module github.com/gopi-frame/event
+module github.com/gopi-frame/eventbus
 
 go 1.22.2
 

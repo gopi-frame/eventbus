@@ -1,9 +1,9 @@
-package event
+package eventbus
 
 import (
 	"github.com/gopi-frame/collection/kv"
 	"github.com/gopi-frame/collection/list"
-	"github.com/gopi-frame/event/contract"
+	"github.com/gopi-frame/eventbus/contract"
 )
 
 // NewBus creates a new [Bus] instance
@@ -54,7 +54,10 @@ func (d *Bus) Dispatch(e contract.Event) {
 	listenerSet, ok := d.listeners.Get(e.Topic())
 	if ok {
 		listenerSet.Each(func(index int, listener contract.Listener) bool {
-			return listener.Handle(e)
+			if err := listener.Handle(e); err != nil {
+				return false
+			}
+			return true
 		})
 	}
 }
