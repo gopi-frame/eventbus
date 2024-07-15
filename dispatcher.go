@@ -3,23 +3,23 @@ package eventbus
 import (
 	"github.com/gopi-frame/collection/kv"
 	"github.com/gopi-frame/collection/list"
-	"github.com/gopi-frame/eventbus/contract"
+	"github.com/gopi-frame/contract/eventbus"
 )
 
 // NewBus creates a new [Bus] instance
 func NewBus() *Bus {
 	return &Bus{
-		listeners: kv.NewMap[string, *list.List[contract.Listener]](),
+		listeners: kv.NewMap[string, *list.List[eventbus.Listener]](),
 	}
 }
 
 // Bus event bus
 type Bus struct {
-	listeners *kv.Map[string, *list.List[contract.Listener]]
+	listeners *kv.Map[string, *list.List[eventbus.Listener]]
 }
 
 // Listen listen
-func (d *Bus) Listen(events []contract.Event, listeners ...contract.Listener) {
+func (d *Bus) Listen(events []eventbus.Event, listeners ...eventbus.Listener) {
 	d.listeners.Lock()
 	defer d.listeners.Unlock()
 	for _, event := range events {
@@ -32,7 +32,7 @@ func (d *Bus) Listen(events []contract.Event, listeners ...contract.Listener) {
 }
 
 // HasListener has listener
-func (d *Bus) HasListener(event contract.Event) (exists bool) {
+func (d *Bus) HasListener(event eventbus.Event) (exists bool) {
 	d.listeners.RLock()
 	defer d.listeners.RUnlock()
 	listeners, ok := d.listeners.Get(event.Topic())
@@ -43,17 +43,17 @@ func (d *Bus) HasListener(event contract.Event) (exists bool) {
 }
 
 // Subscribe adds an subscriber
-func (d *Bus) Subscribe(subscriber contract.Subscriber) {
+func (d *Bus) Subscribe(subscriber eventbus.Subscriber) {
 	subscriber.Subscribe(d)
 }
 
 // Dispatch dispatches an event
-func (d *Bus) Dispatch(e contract.Event) {
+func (d *Bus) Dispatch(e eventbus.Event) {
 	d.listeners.RLock()
 	defer d.listeners.RUnlock()
 	listenerSet, ok := d.listeners.Get(e.Topic())
 	if ok {
-		listenerSet.Each(func(index int, listener contract.Listener) bool {
+		listenerSet.Each(func(index int, listener eventbus.Listener) bool {
 			if err := listener.Handle(e); err != nil {
 				return false
 			}
