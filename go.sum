@@ -1,6 +1,10 @@
+github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc h1:U9qPSI2PIWSS1VwoXQT9A3Wy9MM3WgvqSxFWenqJduM=
 github.com/gopi-frame/collection v0.0.0-20240628084910-a2aef198af68 h1:xn1uGsbe/t3mkX4GyFrn6LVombzyTieiWgN979M8CM4=
 github.com/gopi-frame/collection v0.0.0-20240628084910-a2aef198af68/go.mod h1:oSOAZml9Pm9axHc7+GewSRdcAs8hhLcOHDARchHeKxs=
 github.com/gopi-frame/contract v0.0.0-20240628085022-04f690d0496f h1:eJfCljUzA6yvVfZ+ZO8uvGrd/D2sPUjKJtVCfTs6b5A=
 github.com/gopi-frame/contract v0.0.0-20240628085022-04f690d0496f/go.mod h1:M2ifC/cM/ki1lAqe45W3UlXsCxDVR9U0+eyr/IJAP48=
 github.com/gopi-frame/exception v0.0.0-20240628085057-b605370ef1c5 h1:ZE4LH8wyqB9gPXaCFMIIg5Gl0TvJJ5SqYmQx08ECtv4=
 github.com/gopi-frame/exception v0.0.0-20240628085057-b605370ef1c5/go.mod h1:r867BoZNAVepOOEt1MkpHy42Efm2fyWaAZqw1QGOHqo=
+github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 h1:Jamvg5psRIccs7FGNTlIRMkT8wgtp5eCXdBlqhYGL6U=
+github.com/stretchr/testify v1.9.0 h1:HtqpIVDClZ4nwg75+f6Lvsy/wHu+3BoSGCbBAcpTsTg=
+gopkg.in/yaml.v3 v3.0.1 h1:fxVm/GzAzEWqLHuvctI91KS9hhNmmWOoWu0XTYJS7CA=
