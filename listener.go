@@ -2,9 +2,15 @@ package eventbus
 
 import "github.com/gopi-frame/contract/eventbus"
 
-// Listener create listener from an anonymous function
-func Listener(callback func(event eventbus.Event) error) eventbus.Listener {
-	return &listener{callback}
+// ListenFunc constructs a listener from a callback function with the event type.
+// If the event type can not be asserted to the type of the callback function, then the callback will not be called.
+func ListenFunc[T eventbus.Event](callback func(event T) error) eventbus.Listener {
+	return &listener{func(event eventbus.Event) error {
+		if event, ok := event.(T); ok {
+			return callback(event)
+		}
+		return nil
+	}}
 }
 
 type listener struct {
