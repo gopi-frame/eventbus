@@ -1,4 +1,10 @@
-# EventBus
+# Overview
+[![Go Reference](https://pkg.go.dev/badge/github.com/gopi-frame/eventbus.svg)](https://pkg.go.dev/github.com/gopi-frame/eventbus)
+[![Go](https://github.com/gopi-frame/eventbus/actions/workflows/go.yml/badge.svg)](https://github.com/gopi-frame/eventbus/actions/workflows/go.yml)
+[![codecov](https://codecov.io/gh/gopi-frame/eventbus/graph/badge.svg?token=S8TSLEZV8L)](https://codecov.io/gh/gopi-frame/eventbus)
+[![Go Report Card](https://goreportcard.com/badge/github.com/gopi-frame/eventbus)](https://goreportcard.com/report/github.com/gopi-frame/eventbus)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+
 Package eventbus provides a simple event bus implementation.
 
 ## Installation
