@@ -48,7 +48,7 @@ func (d *Bus) Subscribe(subscriber eventbus.Subscriber) {
 	subscriber.Subscribe(d)
 }
 
-// Dispatch dispatches an event and returns an error if any.
+// Dispatch dispatches an event and returns an exception if any.
 func (d *Bus) Dispatch(e eventbus.Event) error {
 	d.listeners.RLock()
 	defer d.listeners.RUnlock()

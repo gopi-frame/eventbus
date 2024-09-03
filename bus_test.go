@@ -97,10 +97,10 @@ func TestBus_Dispatch(t *testing.T) {
 			assert.Equal(t, "testEventWithSameTopic handled", e2.data)
 		})
 
-		t.Run("error", func(t *testing.T) {
+		t.Run("exception", func(t *testing.T) {
 			e := new(testEventWillCauseError)
 			if err := bus.Dispatch(e); err == nil {
-				assert.FailNow(t, "should have returned error")
+				assert.FailNow(t, "should have returned exception")
 			} else {
 				assert.Equal(t, "unknown event", err.Error())
 			}
