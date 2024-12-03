@@ -13,6 +13,12 @@ func ListenFunc[T eventbus.Event](callback func(event T) error) eventbus.Listene
 	}}
 }
 
+func Listener[T eventbus.Event](eventListener eventbus.EventListener[T]) eventbus.Listener {
+	return &listener{func(event eventbus.Event) error {
+		return eventListener.Handle(event.(T))
+	}}
+}
+
 type listener struct {
 	callback func(event eventbus.Event) error
 }
